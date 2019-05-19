@@ -1,0 +1,117 @@
+:root {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+.nav {
+  background: #046380;
+}
+
+/* Menu icon */
+.menu-toggle {
+  position: relative;
+  width: 60px;
+  height: 49px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.menu-toggle::before,
+.menu-toggle::after {
+  content: "";
+}
+
+.menu-toggle::before,
+.menu-toggle::after,
+.menu-toggle__linecenter {
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  background: #fff;
+  border-radius: 0.5626em;
+  transition: all .25s ease-in-out;
+}
+
+.menu-toggle::before {
+  top: 0;
+}
+
+.menu-toggle__linecenter {
+  top: 18px;
+}
+
+.menu-toggle::after {
+  top: 36px;
+}
+
+.nav.is-open .menu-toggle::before {
+  transform: rotate(45deg);
+  top: 18px;
+}
+
+.nav.is-open .menu-toggle__linecenter,
+.nav.is-open .menu-toggle::after {
+  transform: rotate(-45deg);
+  top: 18px;
+}
+/* Menu icon end */
+
+.menu-container {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+}
+
+.nav-menu {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.nav-menu > li + li {
+  border-top: 1px solid #ccc;
+}
+
+.nav-menu > li > a {
+  display: block;
+  padding: 0.8em 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 37.5em) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-container {
+    height: auto !important;
+  }
+
+  .nav-menu {
+    display: flex;
+    position: static;
+    justify-content: center;
+  }
+
+  .nav-menu > li {
+    margin-left: 1em;
+  }
+
+  .nav-menu > li + li {
+    border-top: initial;
+  }
+}
