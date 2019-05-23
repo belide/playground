@@ -1,0 +1,285 @@
+:root {
+  box-sizing: border-box;
+  --header-bg: orchid;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px auto auto auto auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "test"
+    "aside"
+    "packages";
+}
+
+.header {
+  position: relative;
+  grid-area: header;
+  background: skyblue;
+}
+
+.header-container {
+  position: flex;
+}
+
+.logo {
+  width: 240px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  margin-left: 1.5em;
+  object-fit: contain;
+  background: transparent;
+}
+
+.main {
+  grid-area: main;
+}
+
+.hero {
+  width: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.menu-toggle {
+  position: relative;
+  width: 2.5em;
+  cursor: pointer;
+  top: 35px;
+  left: 15px;
+  height: 28px;
+}
+
+.menu-toggle::before,
+.menu-toggle::after {
+  content: "";
+}
+
+.menu-toggle::before,
+.menu-toggle__linecenter,
+.menu-toggle::after {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: #fff;
+}
+
+.menu-toggle::before {
+  top: 0;
+}
+
+.menu-toggle__linecenter {
+  top: 10px;
+}
+
+.menu-toggle::after {
+  top: 20px;
+}
+
+.menu-container {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+  background: skyblue
+}
+
+.nav.is-active .menu-container {
+  display: block;
+}
+
+.navbar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar > li + li {
+  border-top: 1px solid #ccc;
+}
+
+.navbar > li > a {
+  text-decoration: none;
+  display: block;
+  padding: .5em 1em;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 800;
+}
+
+.test {
+  grid-area: test;
+  font: 400 1rem/1.2 Montserrat, Helvetica, Arial, sans-serif;
+  padding: 2em 0;
+}
+
+.test > * {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+p {
+  line-height: 1.7;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.book-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.aside {
+  background: skyblue;
+  padding: 1em;
+}
+
+.aside-content {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.aside-content-message {
+  flex: 1 0 100%;
+}
+
+.aside-content-button {
+  flex: 1 0 100%;
+  margin-top: 1em;
+}
+
+.aside-button {
+  border: none;
+  border-bottom: 5px solid #ccc;
+  border-radius: .5em .5em 0 0;
+  background: #fff;
+  padding: 1em 2em;
+}
+
+.aside-button:hover {
+  background: #ccc;
+}
+
+.packages {
+  grid-area: packages;
+  margin: 2em 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.box:nth-child(odd) {
+  background: coral;
+}
+
+.box:nth-child(even) {
+  background: skyblue;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: .5em 0;
+}
+
+.h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  padding: 1em;
+}
+
+.button {
+  margin: .5em;
+}
+
+@media screen and (min-width: 47.5em) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .hero {
+    max-height: 600px;
+  }
+
+  .aside-content {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .aside-content-message {
+    flex: 0 0 20em;
+  }
+
+  .aside-content-button {
+    flex: 0 0 20em;
+    margin-top: initial;
+  }
+
+  .menu-container {
+    height: auto !important;
+    position: static;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar > li + li {
+    border-top: initial;
+  }
+
+  .logo {
+    position: static;
+    top: initial;
+    left: initial;
+    transform: none;
+  }
+
+  .header-container {
+    padding: 0 2em;
+    display: flex;
+    align-items: center;
+  }
+  .header {
+    display: flex;
+  }
+
+  .flex-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .box {
+    width: 360px;
+  }
+}
